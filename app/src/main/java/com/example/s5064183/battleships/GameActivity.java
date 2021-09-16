@@ -52,7 +52,7 @@ public class GameActivity extends Activity {
 
     }
 
-    // Set each button to yellow when each direction is choosed
+    // Set each button to yellow when each direction is choosen
     public void changeVer(View view){
         btnVertical.setBackgroundColor(Color.YELLOW);
         mSetupView.setPos(false);
@@ -127,8 +127,8 @@ public class GameActivity extends Activity {
             }
         }
 
-        /**If the ships are placed correctly, get the ship data and proceed to PlayActivity
-         * and if the user tries to continue without placing all ships, display informational message
+        /*If the ships are placed correctly, get the ship data and proceed to PlayActivity and
+         *if the user tries to continue without placing all ships, display informational message
          */
         if (shipPlaced == true){
             BattleshipGameBase.ShipData test = mSetupView.mGame.myShips[0];

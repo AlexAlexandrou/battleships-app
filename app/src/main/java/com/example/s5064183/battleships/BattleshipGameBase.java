@@ -13,8 +13,6 @@ import java.util.List;
 /**
  * Baseclass for the BattleshipGame class.
  *
- * @param <D> The actual type used for ship data. This can be used to add additional data to ships,
- *            but can also just be <code>ShipData</code>
  */
 public abstract class BattleshipGameBase<D extends BattleshipGameBase.ShipData> {
 
@@ -24,15 +22,6 @@ public abstract class BattleshipGameBase<D extends BattleshipGameBase.ShipData> 
     private final List<BattleshipGameListener> onGameChangeListeners = new ArrayList<>();
     private final boolean[] shipsSunk;
 
-
-    /**
-     * Create a new game base. This does not provide all needed state. In particular it does not
-     * store any grid information, or any information on the current guess.
-     *
-     * @param columns The amount of columns in the game grid (how wide is the grid).
-     * @param rows    The amount of rows in the game grid (how high is the grid)
-     * @param ships   The information on the ships in the grid.
-     */
     protected BattleshipGameBase(int columns, int rows, D[] ships) {
         this.columns = columns;
         this.rows = rows;
@@ -54,13 +43,6 @@ public abstract class BattleshipGameBase<D extends BattleshipGameBase.ShipData> 
         return columns;
     }
 
-    /**
-     * All the ships in the game. The index in this array corresponds relate to the values in
-     * {@link #currentGuessAt(int, int)} and {@link #placedCell(int, int)}
-     *
-     * @return The ships in the game with their sizes, orientation and positions.
-     */
-    //@NotNull
     public final D[] getShips() {
         return ships;
     }
@@ -76,22 +58,6 @@ public abstract class BattleshipGameBase<D extends BattleshipGameBase.ShipData> 
         return shipsSunk;
     }
 
-    /**
-     * Determine the current guess state at the given position. There are a number of values:
-     * <table>
-     * <tr><td>{@link #CELL_UNSET}</td><td>-1</td><td>For a cell not guessed yet</td></tr>
-     * <tr><td>{@link #CELL_EMPTY}</td><td>0</td><td>For a cell that has no ships in it</td></tr>
-     * <tr><td>{@link #SHIP_HIT}</td><td>1</td><td>For a cell with a ship that has not yet been sunk</td></tr>
-     * <tr><td>{@link #SHIP_SUNK_BASE}+0</td><td>2</td><td>This cell is part of sunk ship at index 0</td></tr>
-     * <tr><td>{@link #SHIP_SUNK_BASE}+1</td><td>3</td><td>This cell is part of sunk ship at index 1</td></tr>
-     * <tr><td>{@link #SHIP_SUNK_BASE}+2</td><td>4</td><td>This cell is part of sunk ship at index 2</td></tr>
-     * <tr><td>{@link #SHIP_SUNK_BASE}+n</td><td>2+n</td><td>This cell is part of sunk ship at index n</td></tr>
-     * </table>
-     *
-     * @param column The horizontal position, required to be between 0 and {@link #getColumns()} exclusive
-     * @param row    The vertical position, required to be between 0 and {@link #getRows()} exclusive
-     * @return The value at the position per the main description.
-     */
     public abstract int currentGuessAt(int column, int row);
 
     /**
@@ -178,10 +144,7 @@ public abstract class BattleshipGameBase<D extends BattleshipGameBase.ShipData> 
     };
 
     /**
-     * Base class for ship related data. You can extend this class if you want to add additional
-     * data to the class. In that case, and if you want to keep it {@link Parcelable}, you will have to
-     * provide a new {@link #CREATOR} and extends {@link #writeToParcel(Parcel, int)}. In this
-     * implementation ships are symmetric (no begin or end)
+     * Base class for ship related data.
      */
     public static class ShipData implements Parcelable {
         private final int size;
@@ -197,8 +160,7 @@ public abstract class BattleshipGameBase<D extends BattleshipGameBase.ShipData> 
         }
 
         /**
-         * Constructor that initialises the fields from the given parcel. Child classes can append
-         * further data and read it in the child constructor.
+         * Constructor that initialises the fields from the given parcel.
          * @param source The parcel to read it from.
          */
         protected ShipData(Parcel source) {
