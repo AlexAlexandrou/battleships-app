@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#dde8fc"
+    tools:context=".GameActivity">
+
+    <com.example.s5064183.battleships.SetupView
+        android:id="@+id/setupView"
+        android:layout_width="285dp"
+        android:layout_height="285dp"
+        android:layout_margin="5dp"
+        android:layout_marginTop="32dp"
+        app:gridColor="@color/fc6969"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shipColor="#ff0000ff" />
+
+    <Button
+        android:id="@+id/button_Start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:onClick="getShips"
+        android:text="Ready"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <RadioButton
+        android:id="@+id/rbtn_Carrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="10dp"
+        android:onClick="getCarrier"
+        android:text="Carrier"
+        app:layout_constraintBottom_toTopOf="@+id/rbtn_Battleship"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setupView" />
+
+    <RadioButton
+        android:id="@+id/rbtn_Battleship"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
+        android:onClick="getBattleship"
+        android:text="Battleship"
+        app:layout_constraintBottom_toTopOf="@+id/rbtn_Cruiser"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbtn_Carrier" />
+
+    <RadioButton
+        android:id="@+id/rbtn_Cruiser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
+        android:onClick="getCruiser"
+        android:text="Cruiser"
+        app:layout_constraintBottom_toTopOf="@+id/rbtn_Submarine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbtn_Battleship" />
+
+    <RadioButton
+        android:id="@+id/rbtn_Submarine"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
+        android:onClick="getSubmarine"
+        android:text="Submarine"
+        app:layout_constraintBottom_toTopOf="@+id/rbtn_Destroyer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbtn_Cruiser" />
+
+    <RadioButton
+        android:id="@+id/rbtn_Destroyer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="42dp"
+        android:layout_marginStart="42dp"
+        android:onClick="getDestroyer"
+        android:text="Destroyer"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rbtn_Submarine" />
+
+    <Button
+        android:id="@+id/btn_Vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="60dp"
+        android:layout_marginRight="60dp"
+        android:onClick="changeVer"
+        android:text="@string/btn_isVertical"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/setupView" />
+
+    <Button
+        android:id="@+id/btn_Horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="40dp"
+        android:layout_marginRight="40dp"
+        android:onClick="changeHor"
+        android:text="@string/btn_isHorizontal"
+        app:layout_constraintBottom_toTopOf="@+id/button_Start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Vertical" />
+
+</android.support.constraint.ConstraintLayout>

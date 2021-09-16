@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Battleships</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="title_activity_play">PlayActivity</string>
+    <string name="btn_isHorizontal">Horizontal</string>
+    <string name="btn_isVertical">Vertical</string>
+</resources>
